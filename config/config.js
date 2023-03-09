@@ -22,10 +22,10 @@ module.exports = {
     dialect: "mysql",
   },
   production: {
-    username: "root",
-    password: null,
-    database: "database_production",
-    host: "127.0.0.1",
+    username: "iot_prod",
+    password: "123456",
+    database: "techtalk",
+    host: "192.168.9.47",
     dialect: "mysql",
   },
 };
