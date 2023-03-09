@@ -12,7 +12,7 @@ module.exports = {
           {
             model: Category,
             attributes: {
-              exclude: ["createdAt", "updatedAt"],
+              exclude: [ "updatedAt"],
             },
           },
           {
@@ -40,7 +40,7 @@ module.exports = {
           {
             model: Category,
             attributes: {
-              exclude: ["createdAt", "updatedAt"],
+              exclude: [ "updatedAt"],
             },
           },
           {
@@ -143,13 +143,13 @@ module.exports = {
       const { category } = req.params;
       const articles = await Article.findAll({
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: [ "updatedAt"],
         },
         include: [
           {
             model: Category,
             attributes: {
-              exclude: ["createdAt", "updatedAt"],
+              exclude: [ "updatedAt"],
             },
             where: {
               name: category,
