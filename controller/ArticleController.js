@@ -6,7 +6,7 @@ module.exports = {
     try {
       const articles = await Article.findAll({
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: [ "updatedAt"],
         },
         include: [
           {
@@ -34,7 +34,7 @@ module.exports = {
           title: title,
         },
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: ["updatedAt"],
         },
         include: [
           {
@@ -75,7 +75,7 @@ module.exports = {
       const { id } = req.params;
       const articleFound = await Article.findOne({
         where: {
-          id: 2,
+          id: id,
         },
       });
       // res.json(id)
