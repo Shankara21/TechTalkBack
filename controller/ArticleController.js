@@ -6,13 +6,13 @@ module.exports = {
     try {
       const articles = await Article.findAll({
         attributes: {
-          exclude: [ "updatedAt"],
+          exclude: ["updatedAt"],
         },
         include: [
           {
             model: Category,
             attributes: {
-              exclude: [ "updatedAt"],
+              exclude: ["updatedAt"],
             },
           },
           {
@@ -20,6 +20,7 @@ module.exports = {
             attributes: ["username", "fullname", "email"],
           },
         ],
+        order: [["createdAt", "DESC"]],
       });
       res.json(articles);
     } catch (error) {
@@ -40,7 +41,7 @@ module.exports = {
           {
             model: Category,
             attributes: {
-              exclude: [ "updatedAt"],
+              exclude: ["updatedAt"],
             },
           },
           {
@@ -138,18 +139,18 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  filterByCategory: async (req, res) => { 
+  filterByCategory: async (req, res) => {
     try {
       const { category } = req.params;
       const articles = await Article.findAll({
         attributes: {
-          exclude: [ "updatedAt"],
+          exclude: ["updatedAt"],
         },
         include: [
           {
             model: Category,
             attributes: {
-              exclude: [ "updatedAt"],
+              exclude: ["updatedAt"],
             },
             where: {
               name: category,
@@ -160,10 +161,11 @@ module.exports = {
             attributes: ["username", "fullname", "email"],
           },
         ],
+        order: [["createdAt", "DESC"]],
       });
       res.json(articles);
     } catch (error) {
       res.status(500).json(error);
     }
-  }
+  },
 };
