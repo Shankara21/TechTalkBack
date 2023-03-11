@@ -57,10 +57,15 @@ module.exports = {
   },
   store: async (req, res) => {
     try {
+      let infografis;
+      if (req.files.infografis) {
+        infografis = `/uploads/${req.files.infografis[0].filename}`;
+      }
       const article = await Article.create({
         title: req.body.title,
         cover: `/uploads/${req.files.cover[0].filename}`,
-        infografis: `/uploads/${req.files.infografis[0].filename}`,
+        // infografis apa bila tidak ada
+        infografis: infografis,
         content: req.body.content,
         categoryId: req.body.categoryId,
         userId: req.body.userId,
